@@ -1,0 +1,173 @@
+.input-search {
+  position: relative;
+  display: inline-block;
+  border-radius: 4px;
+  overflow:hidden;
+
+  input {
+    padding: 7px 0 5px 38px;
+    font-size: 13px;
+    outline: none;
+    width: 341px;
+    box-shadow: inset 0 2px 8px 0 rgba(27, 44, 89, 0.5);
+    border-style: solid;
+    border-width: 3px;
+    border-image-source: linear-gradient(to right, #1b2c59, #0937ab);
+    border-image-slice: 1;
+    border-radius: 4px;
+    font-family: "Roboto", sans-serif;
+  }
+
+  > svg {
+    width: 16px;
+    height: 16px;
+    left: 14px;
+    top: 8px;
+    position: absolute;
+  }
+
+  button {
+
+    position: absolute;
+    padding: 0;
+    top: 4px;
+    right: 4px;
+    line-height: 30px;
+    height: 24px;
+    width: 50px;
+    border: 0;
+    background-color: #0937ab;
+    text-align: center;
+    box-shadow: -1px 1px 13px 1px rgba(0,0,0,.34);
+    outline: none;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.1s ease-in-out;
+
+    > svg {
+      fill: white;
+      display: inline-block;
+    }
+  }
+
+  input:focus + button {
+    opacity: 1.0;
+    visibility: visible;
+  }
+
+  &.input-huge {
+    input {
+      width: 555px;
+      padding: 17px 0 15px 16px;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+    button {
+      top: 5px;
+      right: 5px;
+      height: 44px;
+      color: white;
+      text-transform: uppercase;
+      font-size: 16px;
+      width: 120px;
+      opacity: 1.0;
+      visibility: visible;
+      svg {
+        opacity: 0;
+        visibility: hidden;
+        fill: white;
+        position: absolute;
+        transition: opacity 0.25s ease-in-out;
+      }
+    }
+
+    &:hover {
+      border-image-source: linear-gradient(to right, #1b2c59, #0937ab);
+      button {
+        background-color: #1a2c59;
+      }
+    }
+
+    input:focus + button {
+      font-size: 0;
+      svg {
+        position: relative;
+        opacity: 1.0;
+        visibility: visible;
+        top: 7px;
+      }
+    }
+
+  }
+
+}
+
+.input-button {
+
+  border-radius: 4px;
+  overflow: hidden;
+  display: inline-block;
+  box-shadow: 0 3px 8px 0 rgba(27, 44, 89, 0.66);
+
+  transition: box-shadow 0.1s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 10px 15px 0 rgba(27, 44, 89, 0.56);
+  }
+
+  &:active {
+    transition: none;
+    box-shadow: 0 3px 8px 0 rgba(27, 44, 89, 0.5);
+    > button {
+      box-shadow: 0 1px 5px 0 rgba(27, 44, 89, 0.5);
+      border: solid 3px #1a2c59;
+    }
+  }
+
+  button {
+    font-size: 16px;
+    text-align: left;
+    padding: 10px 16px;
+    color: black;
+    text-transform: uppercase;
+    background: white;
+    cursor: pointer;
+    outline: none;
+
+    border-style: solid;
+    border-width: 3px;
+    border-image-source: linear-gradient(to right, #1b2c59, #0937ab);
+    border-image-slice: 1;
+
+    > svg {
+      width: 16px;
+      height: 16px;
+      position: relative;
+      top: 2px;
+      margin-left: 6px;
+      fill: black;
+    }
+
+  }
+
+  &.button-primary {
+    > button {
+      color: white;
+      background-image: linear-gradient(to right, #1b2c59, #0937ab);
+    }
+    > button > svg {
+      fill: white;
+    }
+    &:hover {
+      box-shadow: 0 10px 15px 0 rgba(27, 44, 89, 0.56);
+    }
+    &:active {
+      > button {
+        background: #1a2c59;
+      }
+      box-shadow: 0 1px 5px 0 rgba(27, 44, 89, 0.66);
+    }
+  }
+
+}
