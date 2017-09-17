@@ -48,31 +48,35 @@
 <div class="wrap">
 <main class="container">
 
-<div class="container-555 page-onboarding">
+<div class="overlay">
+    <div class="overlay-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+            <path fill="#1B2C59" fill-rule="nonzero" d="M1.665.219L.219 1.665l6.554 6.554-6.554 6.554 1.446 1.446 6.554-6.554 6.554 6.554 1.446-1.446-6.554-6.554 6.554-6.554L14.773.219 8.219 6.773z"/>
+        </svg>
+    </div>
+<div class="container-555 page-define">
 <div class="row">
     <div class="col-xs-12">
 
-        <h1>Create An Investor Pool</h1>
+        <h2>define or edit values</h2>
 
-        <ul class="steps-images-list">
-            <li>
-                <b>1</b>
-                Define
-            </li>
-            <li class="active">
-                <b>2</b>
-                Whitelist
-            </li>
-            <li>
-                <b>3</b>
-                Launch!
-            </li>
-        </ul>
-
-        <p class="text-muted">
-            EtherPool has no cap on how much ether you can raise or how many investors can invest. However, there are relatively high gas       costs to create Whitelists. The network also charges relatively high gas costs to edit the max/min values after the pool is launched.
-            <br><br><i>All fields are optional</i>.
-        </p>
+        <div class="input-block-wrapper">
+            <label class="text-muted">STATUS</label>
+            <ul class="radio-input-wrapper">
+                <li>
+                    <input type="radio" name="radio1" checked="checked" />
+                    <label>Open</label>
+                </li>
+                <li>
+                    <input type="radio" name="radio1" />
+                    <label>Closed</label>
+                </li>
+                <li>
+                    <input type="radio" name="radio1" />
+                    <label>Failed</label>
+                </li>
+            </ul>
+        </div>
 
         <div class="input-block-wrapper">
             <label>Maximum Allocation (ETH)</label>
@@ -98,23 +102,16 @@
             </div>
         </div>
 
-        <div class="input-block-wrapper button-or-button pull-right">
-            <div class="input-button">
-                <button>
-                    create a whitelist
-                </button>
-            </div>
-            <span>or</span>
-            <div class="input-button button-primary">
-                <button>
-                    launch
-                </button>
-            </div>
+        <div class="input-block-wrapper">
+        <div class="input-button button-primary button-disabled pull-right">
+            <button>
+                launch
+            </button>
         </div>
-
         </div>
 
     </div>
+</div>
 </div>
 
 </main>
