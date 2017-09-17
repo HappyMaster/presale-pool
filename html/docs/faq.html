@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EtherPool</title>
+
+    <link rel="icon" href="img/favicon.png" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+
+    <link href="css/style.min.css" rel="stylesheet" inline />
+</head>
+<body>
+
+<header>
+    <div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="logo">EtherPool</div>
+            <div class="input-search">
+                <input type="text" placeholder="Enter a wallet address to find a pool" />
+                <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                        <path fill="white" fill-rule="nonzero" d="M5.6 0A5.567 5.567 0 0 0 0 5.6c0 3.119 2.481 5.6 5.6 5.6a5.59 5.59 0 0 0 3.6-1.3l.4.4v.65L14.65 16 16 14.65 10.95 9.6h-.7l-.375-.375A5.598 5.598 0 0 0 11.2 5.6C11.2 2.481 8.719 0 5.6 0zm0 1.6c2.24 0 4 1.76 4 4s-1.76 4-4 4-4-1.76-4-4 1.76-4 4-4z"/>
+                    </svg>
+                </button>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                    <path fill="#1B2C59" fill-rule="nonzero" d="M5.6 0A5.567 5.567 0 0 0 0 5.6c0 3.119 2.481 5.6 5.6 5.6a5.59 5.59 0 0 0 3.6-1.3l.4.4v.65L14.65 16 16 14.65 10.95 9.6h-.7l-.375-.375A5.598 5.598 0 0 0 11.2 5.6C11.2 2.481 8.719 0 5.6 0zm0 1.6c2.24 0 4 1.76 4 4s-1.76 4-4 4-4-1.76-4-4 1.76-4 4-4z"/>
+                </svg>
+            </div>
+            <ul class="usermenu">
+                <li>
+                    <a href="#">FAQ</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+</header>
+
+<div class="wrap">
+<main class="container">
+
+<div class="row">
+    <div class="col-xs-12">
+        <h1>FAQ</h1>
+
+        <h2>What problem are we solving?</h2>
+        <p>
+            Lorem ipsum dolor sit amet, __consectetur__ adipiscing elit. Cras imperdiet nec erat ac condimentum.
+            Nulla vel rutrum ligula. Sed hendrerit interdum orci a posuere. Vivamus ut velit aliquet, mollis purus
+            eget, iaculis nisl.
+        </p>
+
+        <h2>is this product safe and secure?</h2>
+        <p>
+            We do not ask you to provide your wallet credentials in order to transact with the presale contract.
+            Instead, we will provide you with the data you need to perform the transaction yourself on MEW or some
+            other ethereum wallet platform. Our code is also open source and you can view it on our Github.
+            However, while your ether remains in the pool, it is in the control of the pool manager.
+            Make sure to only contribute to pools managed by someone you trust.
+        </p>
+
+        <h2>How do I know EtherPool can’t see my private key?</h2>
+        <p>
+            We’ve opted not to ask for your wallet credentials. Instead, we will generate the data for you to
+            perform the transactions yourself on MyEtherWallet.
+        </p>
+
+        <h2>is there a cap on how much i can raise?</h2>
+        <p>
+            We have no caps.
+        </p>
+
+        <h2>Is there a limit to the number of investors?</h2>
+        <p>
+            There is no limit to the number of members you can have in your pool. However, there are costs associated
+            with adding a whitelist to the pool which can effectively limit the size of your pool (see answer below).
+        </p>
+
+        <h2>what are the transaction costs?</h2>
+        <p>
+            Every interaction you have with the contract, either as the pool manager or as a contributor, will cost gas.
+            Most operations cost a fixed amount of gas. However, adding a whitelist has a cost proportional to the number
+            of participants in the pool. And, in some cases, editing contribution limits can have a gas cost proportional
+            to how many participants are currently in the pool. Modifying an existing whitelist has a cost proportional
+            to the number of additions/deletions you want to make to the whitelist. Due to gas limits, we recommend
+            including a maximum of 50 members at a time when modifying whitelists. So if you would like to have a
+            whitelist of 150 members, we recommend splitting that into 3 separate ethereum transactions each
+            consisting of 50 members.
+        </p>
+
+        <h2>Can i withdraw my investment?</h2>
+        <p>
+            While the pool retains its open status, you are free to adjust your contribution size. But once a pool
+            has a closed status, you will not be able to make adjustments to your contribution.
+            For any number of reasons, the pool manager may decide to put the pool into a failed state,
+            at which point you’ll be able to withdraw all your contribution.
+        </p>
+
+        <h2>how do i get my tokens?</h2>
+        <p>
+            You will be able to retrieve your tokens from the same EtherPool address where you invested ether. The
+            ICO will send them to that address and you will be able to withdraw them by executing a transaction.
+            As for timing, a good indicator will be the ICO roadmap that the particular ICO published on its website.
+            Your pool creator will likely have more details based on negotiations s/he made with the ICO team.
+            In v2, we plan to personalize the product much more. One way will be to display total token availability
+            and your share.
+        </p>
+
+        <h2>who created this product?</h2>
+        <p>
+            Two American friends living in Stockholm created EtherPool. Tamir Sen
+            developed the backend on the Ethereum protocol and Rolando Mathias
+            designed the product. Alexey Klimovich
+            saved the day by developing the frontend to help us launch quickly.
+            All three are champions of blockchain technology and wanted to use their skills,
+            knowledge and passion to faciliate its evolution. If you’d like to donate to the
+            product, please send any amount of ether here:
+        </p>
+
+        <div class="faq-donate">
+            <label>Ether Donation Address</label><br>
+            <div class="input-search input-huge">
+                <input type="text" placeholder="enter address" />
+                <button>
+                    copy
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13">
+                        <path fill-rule="nonzero" d="M14.959.281L5.527 9.713 1.6 5.785.28 7.104l4.587 4.587.66.63.659-.63L16.277 1.6z"/>
+                    </svg>
+                </button>
+            </div>
+            <p>
+                If you’d like to request features, give product feedback or just say hi, please do so here:
+            </p>
+            <a href="mailto:rmathias@protonmail.com">rmathias@protonmail.com</a>
+        </div>
+
+    </div>
+</div>
+
+</main>
+</div>
+
+<footer>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+
+                <div class="credits">
+                    Made with
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16">
+                        <g fill="none" fill-rule="nonzero">
+                            <path fill="#F8FAFF" d="M2.462 15.79c-.44.002-.833-.27-.985-.683a10.884 10.884 0 0 1-.766-3.68c0-2.016 2.105-6.993 2.454-7.848h7.73c.422.842 2.868 5.815 2.868 7.848a10.834 10.834 0 0 1-.766 3.685c-.154.41-.547.68-.985.677h-9.55z"/>
+                            <path fill="#3C5699" d="M10.765 3.79c.54 1.086 2.788 5.73 2.788 7.637a10.619 10.619 0 0 1-.75 3.609.842.842 0 0 1-.787.543H2.462a.842.842 0 0 1-.787-.543 10.67 10.67 0 0 1-.754-3.609c0-1.89 1.903-6.505 2.383-7.638h7.461zm.261-.422h-8S.5 9.162.5 11.428c.041 1.287.305 2.557.779 3.755.186.492.657.818 1.183.817h9.554c.525.001.996-.322 1.183-.813a11.12 11.12 0 0 0 .775-3.76c0-2.286-2.948-8.059-2.948-8.059z"/>
+                            <path fill="#A6714E" d="M3.026 6.737c-.678 1.836-1.263 3.764-1.263 4.69.024.897.18 1.785.463 2.636.124.4.492.672.91.674a33.684 33.684 0 0 1 4.1-.421c1.375.056 2.745.197 4.102.42a.956.956 0 0 0 .91-.669c.283-.852.44-1.742.463-2.64 0-.9-.708-2.859-1.5-4.69H3.027z"/>
+                            <path fill="#F8FAFF" d="M3.237 3.158v-.345L2.087.21c4.906.042 8.05.98 8.729 1.2v1.747h-7.58z"/>
+                            <path fill="#3C5699" d="M2.412.421c2.77.004 5.527.39 8.193 1.145v1.381H3.447v-.18l-.038-.08L2.412.42zM1.763 0l1.263 2.859v.51h8V1.262S7.6 0 1.763 0z"/>
+                            <path fill="#8892B3" d="M16.29 7.777c-2.203-.274-2.527-4.796-2.527-4.842l-.02-.346L11.387 4H2.816V2.737h8.26l2.527-1.263h1.095a13.41 13.41 0 0 1 1.591 6.303z"/>
+                            <path fill="#8892B3" d="M14.576 1.684a13.208 13.208 0 0 1 1.503 5.832c-1.79-.56-2.105-4.569-2.105-4.598l-.047-.686-.59.353L11.33 3.79H3.026v-.842h8.101l.089-.046 2.438-1.217h.922zm.24-.42h-1.263l-2.527 1.262h-8.42v1.685h8.841l2.106-1.264S13.88 8 16.5 8c0-4.139-1.684-6.737-1.684-6.737z"/>
+                        </g>
+                    </svg>
+                    in Stockholm
+
+                </div>
+
+            </div>
+            <div class="col-xs-3">
+                <ul class="footerlinks">
+                    <li>
+                        <a href="#">contact</a>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </div>
+
+</footer>
+
+<script src="js/script.min.js"></script>
+
+</body>
+</html>
