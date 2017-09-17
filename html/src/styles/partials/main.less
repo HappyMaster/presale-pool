@@ -37,7 +37,7 @@ header {
 
   ul.usermenu {
     padding: 10px 0 0 0;
-    margin: 0 250px 0 0;
+    margin: 0 0;
     float: right;
 
     li {
@@ -45,11 +45,29 @@ header {
       font-size: 16px;
       text-align: left;
       text-transform: uppercase;
+      display: inline-block;
       a {
         color: #1a2c59;
         text-decoration: none;
       }
+      &.usermenu-selected {
+        position: relative;
+      }
+      &.usermenu-selected::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: #1a2c59;
+        bottom: -3px;
+        left: 0;
+      }
     }
+
+    li + li {
+      margin-left: 15px;
+    }
+
   }
 
   .container {

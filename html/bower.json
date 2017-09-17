@@ -14,5 +14,11 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "normalize-strings": "normalize#^1.1.0",
+    "normalize-css": "^7.0.0",
+    "flexboxgrid": "^6.3.2"
+  }
 }
