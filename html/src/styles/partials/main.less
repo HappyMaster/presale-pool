@@ -1,6 +1,7 @@
 body, html {
   font-family: "Roboto", sans-serif;
   background-color: #f8faff;
+  font-weight: 300;
 }
 
 html {
@@ -108,29 +109,36 @@ main {
     line-height: 1.4;
     text-align: left;
     color: #1a2c59;
-    max-width: 482px;
   }
 
   p + h2 {
     margin-top: 40px;
   }
 
-  .faq-donate {
-    label {
-      font-size: 16px;
-      font-weight: bold;
-      line-height: 1.4;
-      text-align: left;
-      color: #1a2c59;
-      margin-bottom: 0;
-      display: inline;
+  .faq-page {
+
+    p {
+      max-width: 482px;
     }
-    a {
-      font-size: 24px;
-      font-weight: bold;
-      text-align: left;
-      color: #1a2c59;
+
+    .faq-donate {
+      label {
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 1.4;
+        text-align: left;
+        color: #1a2c59;
+        margin-bottom: 0;
+        display: inline;
+      }
+      a {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: left;
+        color: #1a2c59;
+      }
     }
+
   }
 
   .input-block-wrapper {
@@ -156,7 +164,7 @@ main {
     padding: 0;
     display: flex;
     justify-content: space-between;
-    padding-bottom: 10px;
+    padding-bottom: 30px;
     li {
       list-style: none;
       width: 80px;
@@ -196,6 +204,9 @@ main {
     h1 {
       margin-bottom: 60px;
       text-align: center;
+    }
+    p {
+      margin-bottom: 32px;
     }
   }
 
@@ -245,4 +256,11 @@ footer {
     display: table;
     clear: right;
   }
+}
+
+.text-muted {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: left;
+  color: #8892b3;
 }
