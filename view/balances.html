@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+}
+th {
+    text-align: left;
+}
+</style>
+</head>
+<body>
+
+<table style="width:100%">
+  <tr>
+    <th>address</th>
+    <th>contribution</th>
+    <th>left over balance</th>
+    <th>in whitelist</th>
+  </tr>
+  <% balances.forEach(function(balance){ %>
+  <tr>
+    <td><%= balance.address %></td>
+    <td><%= balance.contribution %></td>
+    <td><%= balance.remaining %></td>
+    <td><%= balance.whitelisted %></td>
+  </tr>
+  <% }); %>
+</table>
+
+</body>
+</html>

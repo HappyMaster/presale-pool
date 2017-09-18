@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Deploying PresalePool</title>
+    <style>
+            .divtext {
+                border: ridge 2px;
+                padding: 5px;
+                width: 20em;
+                min-height: 5em;
+                overflow: auto;
+            }
+    </style>
+</head>
+
+<body>
+    <div>
+        <label for="value">Value / Amount to Send:</label>
+        <div class="divtext" id ="value" name="value" contentEditable>
+            <%= value %>
+        </div>
+    </div>
+    <br>
+    <div>
+        <label for="estimatedGas">Gas Limit:</label>
+        <div class="divtext" id ="estimatedGas" name="estimatedGas" contentEditable>
+            <%= gas %>
+        </div>
+    </div>
+    <br>
+    <div>
+        <label for="data">Data / Bytecode:</label>
+        <div class="divtext" id ="data" name="data" contentEditable>
+            <%= bytecode %>
+        </div>
+    </div>
+    <br>
+    <div>
+        <label for="contractABI">Contract ABI:</label>
+        <div class="divtext" id ="contractABI" name="contractABI" contentEditable>
+            <%= JSON.stringify(abi) %>
+        </div>
+    </div>
+    <br>
+</body>
+
+</html>
