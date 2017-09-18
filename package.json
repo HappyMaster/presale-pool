@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "a solidity contract to pool funds for token presales",
   "directories": {},
+  "engines": {
+    "node": "8.4.0"
+  },
   "scripts": {
     "test": "mocha --reporter list --timeout 30000",
     "start": "node server.js"
