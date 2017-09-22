@@ -111,6 +111,8 @@ gulp.task('watch', function() {
 gulp.task('deploy', function() {
 
     return gulp.src('docs/**/*')
-        .pipe(ghPages());
+        .pipe(ghPages({
+            force: true
+        }));
 
 });
