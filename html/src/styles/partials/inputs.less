@@ -181,14 +181,23 @@
       }
       box-shadow: 0 1px 5px 0 rgba(27, 44, 89, 0.66);
     }
+    &.button-disabled {
+      box-shadow: none;
+      pointer-events: none;
+      > button {
+        color: #ffffff;
+        background: #1a2c59;
+        opacity: 0.2;
+      }
+    }
   }
 
   &.button-disabled {
     box-shadow: none;
     pointer-events: none;
     > button {
-      color: #ffffff;
-      background: #1a2c59;
+      color: #1a2c59;
+      background: white;
       opacity: 0.2;
     }
   }
