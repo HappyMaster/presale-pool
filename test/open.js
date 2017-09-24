@@ -6,7 +6,7 @@ const util = require('./util');
 const expect = chai.expect;
 
 describe('open state', () => {
-    let defaultPoolArgs = [0, 0, 0, true, []];
+    let defaultPoolArgs = [0, 0, 0, []];
     let creator;
     let buyer1;
     let buyer2;

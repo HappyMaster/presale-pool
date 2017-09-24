@@ -41,8 +41,11 @@ async function sendTransactionWithGas(web3, txn) {
     txn.gas = 1000000;
     return await web3.eth.sendTransaction(txn);
 }
-async function methodWithGas(method, from) {
+async function methodWithGas(method, from, value) {
     let txn = { from: from, gas: 1000000 };
+    if (value) {
+        txn.value = value;
+    }
     return await method.send(txn);
 }
 

@@ -10,7 +10,7 @@ contract PresalePool {
     enum State { Open, Failed, Closed, Paid }
     State public state;
 
-    address public owner;
+    address[] public admins;
 
     uint public minContribution;
     uint public maxContribution;
@@ -29,6 +29,10 @@ contract PresalePool {
     mapping (address => ParticipantState) public balances;
     uint public poolTotal;
 
+    address presaleAddress;
+    bool refundable;
+    uint gasFundTotal;
+
     ERC20 public token;
 
     event Deposit(
@@ -39,13 +43,13 @@ contract PresalePool {
         address indexed _to,
         uint _value
     );
-    event Refund(
+    event Withdrawl(
         address indexed _to,
         uint _value
     );
 
-    modifier onlyOwner() {
-        require(msg.sender == owner);
+    modifier onlyAdmins() {
+        require(isAdmin(msg.sender));
         _;
     }
 
@@ -67,18 +71,19 @@ contract PresalePool {
         locked = false;
     }
 
-
-    function PresalePool(uint _minContribution, uint _maxContribution, uint _maxPoolTotal, bool _whitelistAll, address[] _whitelist) payable {
-        owner = msg.sender;
+    function PresalePool(uint _minContribution, uint _maxContribution, uint _maxPoolTotal, address[] _admins) payable {
         state = State.Open;
+        admins.push(msg.sender);
 
         setContributionSettings(_minContribution, _maxContribution, _maxPoolTotal);
 
-        whitelistAll = _whitelistAll;
-        if (_whitelistAll) {
-            require(_whitelist.length == 0);
-        } else {
-            modifyWhitelist(_whitelist, new address[](0));
+        whitelistAll = true;
+
+        for (uint i = 0; i < _admins.length; i++) {
+            var admin = _admins[i];
+            if (!isAdmin(admin)) {
+                admins.push(admin);
+            }
         }
 
         deposit();
@@ -88,24 +93,33 @@ contract PresalePool {
         deposit();
     }
 
-    function close() public onlyOwner onState(State.Open) {
+    function close() public onlyAdmins onState(State.Open) {
         state = State.Closed;
     }
 
-    function open() public onlyOwner onState(State.Closed) {
+    function open() public onlyAdmins onState(State.Closed) {
         state = State.Open;
     }
 
-    function fail() public onlyOwner stateAllowsConfiguration {
+    function fail() public onlyAdmins stateAllowsConfiguration {
         state = State.Failed;
     }
 
-    function payToPresale(address presaleAddress) public onlyOwner onState(State.Closed) {
+    function payToPresale(address _presaleAddress) public onlyAdmins onState(State.Closed) {
         state = State.Paid;
+        presaleAddress = _presaleAddress;
+        refundable = true;
         presaleAddress.transfer(poolTotal);
     }
 
-    function setToken(address tokenAddress) public onlyOwner {
+    function refundPresale() payable public onState(State.Paid) {
+        require(refundable && msg.value >= poolTotal);
+        require(msg.sender == presaleAddress || isAdmin(msg.sender));
+        gasFundTotal = msg.value - poolTotal;
+        state = State.Failed;
+    }
+
+    function setToken(address tokenAddress) public onlyAdmins {
         token = ERC20(tokenAddress);
     }
 
@@ -115,6 +129,11 @@ contract PresalePool {
 
         if (state == State.Open || state == State.Failed) {
             total += balances[msg.sender].contribution;
+            if (gasFundTotal > 0) {
+                uint gasRefund = (balances[msg.sender].contribution * gasFundTotal) / (poolTotal);
+                gasFundTotal -= gasRefund;
+                total += gasRefund;
+            }
             poolTotal -= balances[msg.sender].contribution;
             balances[msg.sender].contribution = 0;
         } else {
@@ -122,11 +141,10 @@ contract PresalePool {
         }
 
         msg.sender.transfer(total);
-        Refund(msg.sender, total);
+        Withdrawl(msg.sender, total);
     }
 
-    function withdraw(uint amount) public {
-        require(state == State.Open);
+    function withdraw(uint amount) public onState(State.Open) {
         uint total = balances[msg.sender].remaining + balances[msg.sender].contribution;
         require(total >= amount);
         uint debit = min(balances[msg.sender].remaining, amount);
@@ -139,7 +157,7 @@ contract PresalePool {
         // must respect the minContribution limit
         require(balances[msg.sender].remaining == 0 || balances[msg.sender].contribution > 0);
         msg.sender.transfer(amount);
-        Refund(msg.sender, amount);
+        Withdrawl(msg.sender, amount);
     }
 
     function transferMyTokens() public onState(State.Paid) noReentrancy {
@@ -151,13 +169,14 @@ contract PresalePool {
 
         poolTotal -= participantContribution;
         balances[msg.sender].contribution = 0;
+        refundable = false;
         require(token.transfer(msg.sender, participantShare));
 
         Payout(msg.sender, participantShare);
     }
 
     address[] public failures;
-    function transferAllTokens() public onlyOwner onState(State.Paid) noReentrancy returns (address[]) {
+    function transferAllTokens() public onlyAdmins onState(State.Paid) noReentrancy returns (address[]) {
         uint tokenBalance = token.balanceOf(address(this));
         require(tokenBalance > 0);
         delete failures;
@@ -173,6 +192,7 @@ contract PresalePool {
                 balances[participant].contribution = 0;
 
                 if (token.transfer(participant, participantShare)) {
+                    refundable = false;
                     Payout(participant, participantShare);
                     tokenBalance -= participantShare;
                     if (tokenBalance == 0) {
@@ -189,7 +209,7 @@ contract PresalePool {
         return failures;
     }
 
-    function modifyWhitelist(address[] toInclude, address[] toExclude) public onlyOwner stateAllowsConfiguration {
+    function modifyWhitelist(address[] toInclude, address[] toExclude) public onlyAdmins stateAllowsConfiguration {
         bool previous = whitelistAll;
         uint i;
         if (previous) {
@@ -228,14 +248,16 @@ contract PresalePool {
         }
     }
 
-    function removeWhitelist() public onlyOwner stateAllowsConfiguration {
-        whitelistAll = true;
-        for (uint i = 0; i < participants.length; i++) {
-            balances[participants[i]].whitelisted = true;
+    function removeWhitelist() public onlyAdmins stateAllowsConfiguration {
+        if (!whitelistAll) {
+            whitelistAll = true;
+            for (uint i = 0; i < participants.length; i++) {
+                balances[participants[i]].whitelisted = true;
+            }
         }
     }
 
-    function setContributionSettings(uint _minContribution, uint _maxContribution, uint _maxPoolTotal) public onlyOwner stateAllowsConfiguration {
+    function setContributionSettings(uint _minContribution, uint _maxContribution, uint _maxPoolTotal) public onlyAdmins stateAllowsConfiguration {
         // we raised the minContribution threshold
         bool recompute = (minContribution < _minContribution);
         // we lowered the maxContribution threshold
@@ -301,8 +323,17 @@ contract PresalePool {
         }
     }
 
+    function isAdmin(address addr) internal constant returns (bool) {
+        for (uint i = 0; i < admins.length; i++) {
+            if (admins[i] == addr) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     function included(address participant) internal constant returns (bool) {
-        return whitelistAll || participant == owner || balances[participant].whitelisted;
+        return whitelistAll || balances[participant].whitelisted || isAdmin(participant);
     }
 
     function getContribution(address participant, uint amount) internal constant returns (uint, uint) {

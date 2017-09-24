@@ -6,7 +6,7 @@ const util = require('./util');
 const expect = chai.expect;
 
 describe('whitelist', () => {
-    let defaultPoolArgs = [0, 0, 0, true, []];
+    let defaultPoolArgs = [0, 0, 0, []];
     let creator;
     let buyer1;
     let buyer2;
@@ -21,40 +21,6 @@ describe('whitelist', () => {
 
     after(() => {
         server.tearDown();
-    });
-
-    it('can be deployed', async () => {
-        let PresalePool = await util.deployContract(
-            web3, "PresalePool", creator, [0, 0, 0, false, [buyer1]]
-        );
-
-        await util.sendTransactionWithGas(
-            web3,
-            {
-                from: buyer1,
-                to: PresalePool.options.address,
-                value: web3.utils.toWei(5, "ether")
-            }
-        );
-
-        await util.expectVMException(
-            util.sendTransactionWithGas(
-                web3,
-                {
-                    from: buyer2,
-                    to: PresalePool.options.address,
-                    value: web3.utils.toWei(1, "ether")
-                }
-            )
-        );
-
-        let expectedBalances = {}
-        expectedBalances[buyer1] = {
-            remaining: web3.utils.toWei(0, "ether"),
-            contribution: web3.utils.toWei(5, "ether"),
-            whitelisted: true
-        }
-        await util.verifyState(web3, PresalePool, expectedBalances, web3.utils.toWei(5, "ether"));
     });
 
     it('can be modified', async () => {
