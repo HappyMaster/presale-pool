@@ -4,16 +4,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { FaqComponent } from './page/faq/faq.component';
-import { MainComponent } from './page/main/main.component';
 import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './page/home/home.component';
+import { FaqComponent } from './page/faq/faq.component';
+import { CreatorComponent } from './page/creator/creator.component';
+import { InvestorComponent } from './page/investor/investor.component';
 
 const appRoutes: Routes = [
   { path: 'faq', component: FaqComponent },
-  { path: 'home', component: MainComponent },
-  { path: '**', component: MainComponent },
-  // { path: 'contributor', component: MainComponent },
-  // { path: 'investor', component: MainComponent }
+  { path: 'home', component: HomeComponent },
+  { path: 'creator', component: CreatorComponent },
+  { path: 'investor', component: InvestorComponent },
+  { path: '**', component: HomeComponent }
 ];
 
 
@@ -21,9 +23,11 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HeaderComponent,
+    FooterComponent,
+    HomeComponent,
     FaqComponent,
-    MainComponent,
-    FooterComponent
+    CreatorComponent,
+    InvestorComponent
   ],
   imports: [
     BrowserModule,
