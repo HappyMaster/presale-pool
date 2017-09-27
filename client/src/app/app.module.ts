@@ -10,6 +10,9 @@ import { FaqComponent } from './page/faq/faq.component';
 import { CreatorComponent } from './page/creator/creator.component';
 import { InvestorComponent } from './page/investor/investor.component';
 
+import { MaterialModule } from './material/material.module';
+
+
 const appRoutes: Routes = [
   { path: 'faq', component: FaqComponent },
   { path: 'home', component: HomeComponent },
@@ -34,7 +37,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
-    )
+    ),
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
