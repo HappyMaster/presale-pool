@@ -24,11 +24,15 @@
             <a routerLink="/faq" routerLinkActive="active">FAQ</a>
           </li>
           <li>
-            <a href="#">INVESTOR
+            <button md-button [mdMenuTriggerFor]="menu">{{selected}}
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="7" viewBox="0 0 16 7">
                 <path fill="#1B2C59" fill-rule="nonzero" d="M0 0v3.111L8 7l8-3.889V0L8 3.889z"></path>
               </svg>
-            </a>
+            </button>
+            <md-menu #menu="mdMenu" x-position="before" y-position="above">
+              <button md-menu-item routerLink="/creator" (click)="select('CREATOR')">CREATOR</button>
+              <button md-menu-item routerLink="/investor" (click)="select('INVESTOR')">INVESTOR</button>
+            </md-menu>
           </li>
         </ul>
       </div>
