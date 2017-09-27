@@ -1,0 +1,35 @@
+footer {
+  display: block;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 32px 0;
+}
+.credits {
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  color: #8892b3;
+}
+.credits svg {
+  position: relative;
+  top: 3px;
+}
+ul.footerlinks {
+  padding: 0;
+  margin: 0 250px 0 0;
+}
+ul.footerlinks li {
+  list-style: none;
+  font-size: 16px;
+  text-align: left;
+  text-transform: uppercase;
+}
+ul.footerlinks li a {
+  color: #1a2c59;
+  text-decoration: none;
+}
+.container {
+  max-width: 968px;
+}
