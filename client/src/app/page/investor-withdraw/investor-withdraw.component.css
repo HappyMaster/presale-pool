@@ -1,0 +1,62 @@
+/* Override default stepper style */
+::ng-deep .mat-horizontal-stepper-header {
+  height: 80px !important;
+}
+
+/* Hide step icons */
+::ng-deep .mat-step-icon {
+  display: none !important;
+}
+::ng-deep .mat-step-icon-not-touched {
+  display: none !important;
+}
+::ng-deep .mat-stepper-horizontal {
+  background-color: transparent;
+}
+::ng-deep .mat-stepper-horizontal-line {
+  display: none !important;
+}
+::ng-deep .mat-step-label {
+  height: 80px !important;
+  width: 80px !important;
+  color: rgb(255, 255, 255) !important;
+  display: flex !important;
+  opacity: .1 !important;
+  background-image: linear-gradient(to right,#1b2c59,#0937ab);
+  border-radius: 80px 80px 80px 80px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 19.6px;
+}
+::ng-deep .mat-step-label-active {
+  opacity: 1 !important;
+}
+
+
+.mat-button {
+  line-height: 18.4px;
+}
+.input-search input {
+  text-transform: none !important;
+}
+.input-search .ng-invalid {
+  background-color: rgba(255, 0, 0, 0.11);
+}
+
+button.btn-success {
+  font-size: 0;
+  opacity: 1;
+  visibility: visible;
+}
+button.btn-success svg {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  top: 7px;
+}
+button.btn-success+svg {
+  display: none;
+}
+
+

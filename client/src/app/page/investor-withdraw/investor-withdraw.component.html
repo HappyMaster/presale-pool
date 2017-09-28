@@ -1,0 +1,77 @@
+<div class="wrap">
+  <main class="container">
+
+    <div class="overlay">
+      <div class="overlay-close" (click)="close()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+          <path fill="#1B2C59" fill-rule="nonzero" d="M1.665.219L.219 1.665l6.554 6.554-6.554 6.554 1.446 1.446 6.554-6.554 6.554 6.554 1.446-1.446-6.554-6.554 6.554-6.554L14.773.219 8.219 6.773z"></path>
+        </svg>
+      </div>
+    </div>
+
+
+    <div class="container-555 page-onboarding">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <h1>Withdraw Ether</h1>
+
+          <md-horizontal-stepper (selectionChange)="onStepChange($event)" linear>
+            <md-step [stepControl]="FormGroup">
+              <form [formGroup]="FormGroup">
+                <ng-template mdStepLabel>
+                  <b>1</b>
+                  Amount
+                </ng-template>
+
+                <p class="text-muted">
+                  Decide how much ether you want to withdraw from the pool.
+                </p>
+
+
+                <div class="input-block-wrapper">
+                  <label>Maximum</label>
+                  <div class="">
+                    <md-form-field>
+                      <input mdInput type="checkbox" formControlName="max">
+                    </md-form-field>
+                  </div>
+                </div>
+
+                <div class="input-block-wrapper">
+                  <label>Amount</label>
+                  <div class="input-search input-huge input-block">
+                    <md-form-field>
+                      <input mdInput type="number" formControlName="max">
+                    </md-form-field>
+                  </div>
+                </div>
+
+                <div class="input-button button-primary pull-right" [class.button-disabled]="!FormGroup.valid">
+                  <button md-button mdStepperNext (click)="onNextClicked()">
+                    Next
+                  </button>
+                </div>
+              </form>
+            </md-step>
+
+            <md-step>
+              <form>
+                <ng-template mdStepLabel>
+                  <b>2</b>
+                  Withdraw
+                </ng-template>
+                <app-transaction-form
+                  [address]="address"
+                  [amount]="amount"
+                  [gasLimit]="gasLimit"
+                  [data]="data"></app-transaction-form>
+              </form>
+            </md-step>
+          </md-horizontal-stepper>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
