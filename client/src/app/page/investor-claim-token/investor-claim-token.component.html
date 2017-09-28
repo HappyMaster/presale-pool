@@ -1,0 +1,25 @@
+<div class="wrap">
+  <main class="container">
+
+    <div class="overlay">
+      <div class="overlay-close" (click)="back()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+          <path fill="#1B2C59" fill-rule="nonzero" d="M1.665.219L.219 1.665l6.554 6.554-6.554 6.554 1.446 1.446 6.554-6.554 6.554 6.554 1.446-1.446-6.554-6.554 6.554-6.554L14.773.219 8.219 6.773z"></path>
+        </svg>
+      </div>
+      <div class="container-555">
+        <div class="row">
+          <div class="col-xs-12">
+
+            <h2>CLAIM YOUR TOKENS!</h2>
+            <app-transaction-form
+              [address]="address"
+              [amount]="amount"
+              [gasLimit]="gasLimit"
+              [data]="data"></app-transaction-form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
