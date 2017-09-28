@@ -14,15 +14,15 @@
               {{status}}
             </div>
           </div>
-          <div class="input-button button-primary button-disabled">
-            <button (click)="getMyTokens()">
+          <div class="input-button button-primary" [class.button-disabled]='!canClaim()'>
+            <button routerLink='./claim'>
               GET MY TOKENS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
               <path fill="#FFF" fill-rule="nonzero" d="M11.2 0C8.55 0 6.4.897 6.4 2s2.15 2 4.8 2S16 3.103 16 2s-2.15-2-4.8-2zM6.4 2.8v1.6c0 1.119 2.16 2 4.8 2 2.64 0 4.8-.881 4.8-2V2.8c0 1.119-2.16 2-4.8 2-2.64 0-4.8-.881-4.8-2zM16 5.125c0 1.2-2.16 2.075-4.8 2.075-2.64 0-4.8-.881-4.8-2v1.275c1.919.24 3.606 1.05 3.925 2.25h.875c2.64 0 4.8-.881 4.8-2v-1.6zM4.8 7.2c-2.64 0-4.8.881-4.8 2s2.16 2 4.8 2c2.64 0 4.8-.881 4.8-2s-2.16-2-4.8-2zm11.2.4c0 1.119-2.16 2-4.8 2h-.8v1.6h.8c2.64 0 4.8-.881 4.8-2V7.6zM0 10v1.6c0 1.119 2.16 2 4.8 2 2.64 0 4.8-.881 4.8-2V10c0 1.119-2.16 2-4.8 2-2.64 0-4.8-.881-4.8-2zm16 0c0 1.119-2.16 2-4.8 2h-.8v1.6h.8c2.64 0 4.8-.881 4.8-2V10zM0 12.4V14c0 1.119 2.16 2 4.8 2 2.64 0 4.8-.881 4.8-2v-1.6c0 1.119-2.16 2-4.8 2-2.64 0-4.8-.881-4.8-2z"></path>
             </svg>
             </button>
           </div>
-          <div class="input-button button-disabled">
-            <button (click)="withdrawEther()">
+          <div class="input-button" [class.button-disabled]='!canWithdraw()'>
+            <button routerLink="./withdraw">
               WITHDRAW ETHER
             </button>
           </div>

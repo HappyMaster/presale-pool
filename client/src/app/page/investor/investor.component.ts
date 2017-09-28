@@ -59,11 +59,18 @@ export class InvestorComponent implements OnInit {
     return accounting.formatMoney(value, { symbol: 'ETH',  format: '%v %s' });
   }
 
-  getMyTokens() {
-    console.log('getMyTokens!');
+  /**
+   * Whether the current user can clain tokens from the pool
+   * @returns {boolean}
+   */
+  canClaim() {
+    return true;
   }
-
-  withdrawEther() {
-    console.log('withdrawEther!');
+  /**
+   * Whether the user can withdraw funds from the current pool
+   * @returns {boolean}
+   */
+  canWithdraw() {
+    return true;
   }
 }
