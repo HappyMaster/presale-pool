@@ -1,0 +1,12 @@
+<div class="input-block-wrapper">
+  <label>{{label}}</label>
+  <div class="input-search input-huge input-block">
+    <input #inputTarget type="text" value="{{value}}" readonly>
+    <button [ngxClipboard]="inputTarget" [class.btn-success]= "isCopied" (cbOnSuccess)="isCopied = true">
+      copy
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13">
+        <path fill-rule="nonzero" d="M14.959.281L5.527 9.713 1.6 5.785.28 7.104l4.587 4.587.66.63.659-.63L16.277 1.6z"></path>
+      </svg>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<p>
+  Copy the data below into MyEtherWallet in a new browser. MyEtherWallet will generate a Transaction ID
+  for you to input in the bottommost input field on this form. Click submit and your pool will launch!
+</p>
+
+<app-transaction-form-field label='To Adress' [value]="address"></app-transaction-form-field>
+<app-transaction-form-field label='Amount to Send' [value]="amount"></app-transaction-form-field>
+<app-transaction-form-field label='Gas Limit' [value]="gasLimit"></app-transaction-form-field>
+<app-transaction-form-field label='Data' [value]="data"></app-transaction-form-field>
+<!--<div class="input-block-wrapper">-->
+  <!--<label>To Address</label>-->
+  <!--<div class="input-search input-huge input-block">-->
+    <!--<input #address type="text" value="{{address}}" readonly>-->
+    <!--<button  [ngxClipboard]="address" [class.btn-success]= "isCopied1" (cbOnSuccess)="isCopied1 = true">-->
+      <!--copy-->
+      <!--<svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13">-->
+        <!--<path fill-rule="nonzero" d="M14.959.281L5.527 9.713 1.6 5.785.28 7.104l4.587 4.587.66.63.659-.63L16.277 1.6z"></path>-->
+      <!--</svg>-->
+    <!--</button>-->
+  <!--</div>-->
+<!--</div>-->
+
+<!--<div class="input-block-wrapper">-->
+  <!--<label>Amount to Send</label>-->
+  <!--<div class="input-search input-huge input-block">-->
+    <!--<input #inputTarget2 type="text" value="{{testValue2}}" readonly>-->
+    <!--<button  [ngxClipboard]="inputTarget2" [class.btn-success]= "isCopied2" (cbOnSuccess)="isCopied2 = true">-->
+      <!--copy-->
+      <!--<svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13">-->
+        <!--<path fill-rule="nonzero" d="M14.959.281L5.527 9.713 1.6 5.785.28 7.104l4.587 4.587.66.63.659-.63L16.277 1.6z"></path>-->
+      <!--</svg>-->
+    <!--</button>-->
+  <!--</div>-->
+<!--</div>-->
+
+<!--<div class="input-block-wrapper">-->
+  <!--<label>Gas Limit</label>-->
+  <!--<div class="input-search input-huge input-block">-->
+    <!--<input #inputTarget3 type="text" value="{{testValue3}}" readonly>-->
+    <!--<button [ngxClipboard]="inputTarget3" [class.btn-success]= "isCopied3" (cbOnSuccess)="isCopied3 = true">-->
+      <!--copy-->
+      <!--<svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13">-->
+        <!--<path fill-rule="nonzero" d="M14.959.281L5.527 9.713 1.6 5.785.28 7.104l4.587 4.587.66.63.659-.63L16.277 1.6z"></path>-->
+      <!--</svg>-->
+    <!--</button>-->
+  <!--</div>-->
+<!--</div>-->
+
+<!--<div class="input-block-wrapper">-->
+  <!--<label>Data</label>-->
+  <!--<div class="input-search input-huge input-block">-->
+    <!--<input mdInput type="text" formControlName="transactionId" placeholder="enter address">-->
+  <!--</div>-->
+<!--</div>-->
