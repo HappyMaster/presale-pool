@@ -7,17 +7,20 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './page/home/home.component';
 import { FaqComponent } from './page/faq/faq.component';
+import { CreatePoolComponent } from './page/create-pool/create-pool.component';
 import { CreatorComponent } from './page/creator/creator.component';
 import { InvestorComponent } from './page/investor/investor.component';
 
 import { MaterialModule } from './material/material.module';
 
-
 const appRoutes: Routes = [
-  { path: 'faq', component: FaqComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'faq', component: FaqComponent },
+  { path: 'create', component: CreatePoolComponent },
   { path: 'creator', component: CreatorComponent },
   { path: 'investor', component: InvestorComponent },
+  { path: 'pool/:address/creator', component: CreatorComponent },
+  { path: 'pool/:address/investor', component: InvestorComponent },
   { path: '**', component: HomeComponent }
 ];
 
@@ -30,7 +33,8 @@ const appRoutes: Routes = [
     HomeComponent,
     FaqComponent,
     CreatorComponent,
-    InvestorComponent
+    InvestorComponent,
+    CreatePoolComponent
   ],
   imports: [
     BrowserModule,
