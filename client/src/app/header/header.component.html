@@ -5,9 +5,9 @@
         <div class="logo">
           <a routerLink="/" routerLinkActive="active">EtherPool</a>
         </div>
-        <div class="input-search">
-          <input type="text" placeholder="Enter a wallet address to find a pool">
-          <button>
+        <div class="input-search" [class.activated]="isSearchActive()">
+          <input type="search" [(ngModel)]="searchAddress" placeholder="Enter a contract address to find a pool" (keydown)="keyDownFunction($event)">
+          <button (click)="OpenSearchAddress()">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
               <path fill="white" fill-rule="nonzero" d="M5.6 0A5.567 5.567 0 0 0 0 5.6c0 3.119 2.481 5.6 5.6 5.6a5.59 5.59 0 0 0 3.6-1.3l.4.4v.65L14.65 16 16 14.65 10.95 9.6h-.7l-.375-.375A5.598 5.598 0 0 0 11.2 5.6C11.2 2.481 8.719 0 5.6 0zm0 1.6c2.24 0 4 1.76 4 4s-1.76 4-4 4-4-1.76-4-4 1.76-4 4-4z"></path>
             </svg>
@@ -17,10 +17,16 @@
           </svg>
         </div>
         <ul class="usermenu">
+          <!-- @TODO Debug output -->
+          <li>
+            <a href="https://etherscan.io/address/{{contractAddress}}">
+              {{contractAddress}}
+            </a>
+          </li>
           <li>
             <a href="#">STATS</a>
           </li>
-          <li class="usermenu-selected">
+          <li>
             <a routerLink="/faq" routerLinkActive="active">FAQ</a>
           </li>
           <li>
