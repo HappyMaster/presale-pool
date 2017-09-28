@@ -1,0 +1,137 @@
+<div class="wrap">
+  <main class="container">
+
+    <div class="container-555 page-onboarding">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <h1>Create An Investor Pool</h1>
+
+          <md-horizontal-stepper linear>
+            <md-step [stepControl]="FormGroupDefine">
+              <form [formGroup]="FormGroupDefine">
+                <ng-template mdStepLabel>
+                  <b>1</b>
+                  Define
+                </ng-template>
+
+                <p class="text-muted">
+                  EtherPool has no cap on how much ether you can raise or how many investors can invest. However, there are relatively high gas       costs to create Whitelists. The network also charges relatively high gas costs to edit the max/min values after the pool is launched.
+                  <br><br><i>All fields are optional</i>.
+                </p>
+
+
+                <div class="input-block-wrapper">
+                  <label>Maximum Allocation (ETH)</label>
+                  <div class="input-search input-huge input-block">
+                    <md-form-field>
+                      <input mdInput type="text" formControlName="maxAllocation">
+                    </md-form-field>
+                  </div>
+                </div>
+
+                <div class="input-block-wrapper">
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <label>Maximum Per Investor (ETH)</label>
+                      <div class="input-search input-huge input-block">
+                        <md-form-field>
+                          <input mdInput type="text" formControlName="maxPerInvestor">
+                        </md-form-field>
+                      </div>
+                    </div>
+                    <div class="col-xs-6">
+                      <label>Minimum Per Investor (ETH)</label>
+                      <div class="input-search input-huge input-block">
+                        <md-form-field>
+                          <input mdInput type="text" formControlName="minPerInvestor">
+                        </md-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="input-button button-primary pull-right" [class.button-disabled]="!FormGroupDefine.valid">
+                  <button md-button mdStepperNext (click)="onNextClicked()">
+                    Next
+                  </button>
+                </div>
+              </form>
+            </md-step>
+
+            <md-step [stepControl]="FormGroupLaunch">
+              <form [formGroup]="FormGroupLaunch">
+                <ng-template mdStepLabel>
+                  <b>2</b>
+                  Launch
+                </ng-template>
+
+                <p>
+                  Copy the data below into MyEtherWallet in a new browser. MyEtherWallet will generate a Transaction ID
+                  for you to input in the bottommost input field on this form. Click submit and your pool will launch!
+                </p>
+
+                <div class="input-block-wrapper">
+                  <label>Data Field</label>
+                  <div class="input-search input-huge input-block">
+                    <input #inputTarget1 type="text" value="{{testValue1}}" readonly>
+                    <button  [ngxClipboard]="inputTarget1" [class.btn-success]= "isCopied1" (cbOnSuccess)="isCopied1 = true">
+                      copy
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13">
+                        <path fill-rule="nonzero" d="M14.959.281L5.527 9.713 1.6 5.785.28 7.104l4.587 4.587.66.63.659-.63L16.277 1.6z"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="input-block-wrapper">
+                  <label>Data Field</label>
+                  <div class="input-search input-huge input-block">
+                    <input #inputTarget2 type="text" value="{{testValue2}}" readonly>
+                    <button  [ngxClipboard]="inputTarget2" [class.btn-success]= "isCopied2" (cbOnSuccess)="isCopied2 = true">
+                      copy
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13">
+                        <path fill-rule="nonzero" d="M14.959.281L5.527 9.713 1.6 5.785.28 7.104l4.587 4.587.66.63.659-.63L16.277 1.6z"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="input-block-wrapper">
+                  <label>Data Field</label>
+                  <div class="input-search input-huge input-block">
+                    <input #inputTarget3 type="text" value="{{testValue3}}" readonly>
+                    <button [ngxClipboard]="inputTarget3" [class.btn-success]= "isCopied3" (cbOnSuccess)="isCopied3 = true">
+                      copy
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13">
+                        <path fill-rule="nonzero" d="M14.959.281L5.527 9.713 1.6 5.785.28 7.104l4.587 4.587.66.63.659-.63L16.277 1.6z"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="input-block-wrapper">
+                  <label>Transaction ID</label>
+                  <div class="input-search input-huge input-block">
+                    <input mdInput type="text" formControlName="transactionId" placeholder="enter address">
+                    <!--<input type="text" placeholder="enter address" required>-->
+                  </div>
+                </div>
+
+                <div class="input-button button-primary pull-right" [class.button-disabled]="!FormGroupLaunch.valid">
+                  <button md-button mdStepperNext (click)="onLaunchClicked()">
+                    Launch <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                    <path fill="#FFF" fill-rule="nonzero" d="M16 0s-4.8 0-6.4 1.6c-1.86 1.86-6.4 8.8-6.4 8.8l2.4 2.4s6.94-4.54 8.8-6.4C16 4.8 16 0 16 0zM5.6 12.8l.8 3.2c2.828-1.697 2.4-4 2.4-4.8l-3.2 1.6zm-2.4-2.4l1.6-3.2C4 7.2 1.697 6.772 0 9.6l3.2.8zm8.7-7.9c.41 0 .813.163 1.125.475a1.584 1.584 0 0 1 0 2.25 1.584 1.584 0 0 1-2.25 0 1.584 1.584 0 0 1 0-2.25A1.587 1.587 0 0 1 11.9 2.5zM2.4 12C0 12.8.05 15.95.05 15.95S3.2 16 4 13.6l-2.4.8.8-2.4z"></path>
+                  </svg>
+                  </button>
+                </div>
+
+              </form>
+            </md-step>
+          </md-horizontal-stepper>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
