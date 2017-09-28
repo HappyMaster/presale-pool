@@ -10,20 +10,24 @@ import { FaqComponent } from './page/faq/faq.component';
 import { CreatePoolComponent } from './page/create-pool/create-pool.component';
 import { CreatorComponent } from './page/creator/creator.component';
 import { InvestorComponent } from './page/investor/investor.component';
+import { InvestorClaimTokenComponent } from './page/investor-claim-token/investor-claim-token.component';
 
 import { MaterialModule } from './material/material.module';
+import { TransactionFormComponent } from './transaction-form/transaction-form.component';
+import { TransactionFormFieldComponent } from './transaction-form/transaction-form-field/transaction-form-field.component';
+import { InvestorWithdrawComponent } from './page/investor-withdraw/investor-withdraw.component';
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'create', component: CreatePoolComponent },
   { path: 'creator', component: CreatorComponent },
   { path: 'investor', component: InvestorComponent },
   { path: 'pool/:address/creator', component: CreatorComponent },
-  { path: 'pool/:address/investor', component: InvestorComponent },
+  { path: 'pool/:address/investor', component: InvestorComponent},
+  { path: 'pool/:address/investor/claim', component: InvestorClaimTokenComponent},
+  { path: 'pool/:address/investor/withdraw', component: InvestorWithdrawComponent},
   { path: '**', component: HomeComponent }
 ];
-
 
 @NgModule({
   declarations: [
@@ -34,7 +38,11 @@ const appRoutes: Routes = [
     FaqComponent,
     CreatorComponent,
     InvestorComponent,
-    CreatePoolComponent
+    CreatePoolComponent,
+    InvestorClaimTokenComponent,
+    TransactionFormComponent,
+    TransactionFormFieldComponent,
+    InvestorWithdrawComponent
   ],
   imports: [
     BrowserModule,
