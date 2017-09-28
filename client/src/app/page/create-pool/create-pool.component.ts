@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
-
+import { PositiveOrNull } from '../../validator/positive-or-null.validator';
 /**
  * Custom validator ensuring the input is either null or >= 0
  * @param {FormControl} c
  * @returns {{PositiveOrNull: {valid: boolean}}}
  */
-function validatePositiveOrNull(c: FormControl) {
-  return (!c.value || parseFloat(c.value) >= 0) ? null : {
-    PositiveOrNull: {
-      valid: false
-    }
-  };
-}
+// function validatePositiveOrNull(c: FormControl) {
+//   return (!c.value || parseFloat(c.value) >= 0) ? null : {
+//     PositiveOrNull: {
+//       valid: false
+//     }
+//   };
+// }
 
 @Component({
   selector: 'app-create-pool',
@@ -33,9 +33,9 @@ export class CreatePoolComponent implements OnInit {
 
   ngOnInit() {
     this.FormGroupDefine = this._formBuilder.group({
-      maxAllocation:  ['', validatePositiveOrNull],
-      maxPerInvestor: ['', validatePositiveOrNull],
-      minPerInvestor: ['', validatePositiveOrNull]
+      maxAllocation:  ['', PositiveOrNull],
+      maxPerInvestor: ['', PositiveOrNull],
+      minPerInvestor: ['', PositiveOrNull]
     });
     this.FormGroupLaunch = this._formBuilder.group({
       transactionId:  ['', [Validators.required, Validators.minLength(2)]]
