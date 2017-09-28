@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
     // Subscribe to all router events to retrieve contract address when available
     // Due to header being higher in hierarchy than components with address param in route
     router.events.forEach((e) => {
-      if (e instanceof NavigationEnd) {
+      if (e instanceof NavigationEnd && route.firstChild) {
         const address = route.firstChild.snapshot.params['address'];
         this.contractAddress = address ? address : null;
       }
