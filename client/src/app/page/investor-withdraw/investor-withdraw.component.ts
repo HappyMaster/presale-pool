@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
 })
 export class InvestorWithdrawComponent implements OnInit {
   FormGroup: FormGroup;
-  address:    string;
+  address:   string;
   amount:    number;
   gasLimit:  number;
   data:      string;
